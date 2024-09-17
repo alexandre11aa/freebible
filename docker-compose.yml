@@ -1,0 +1,22 @@
+services:
+  api_freebible:
+    container_name: api_freebible
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    volumes:
+      - ./api_freebible:/api_freebible
+      - ./data/web/static:/data/web/static/
+      - ./data/web/media:/data/web/media/
+    env_file:
+      - ./dotenv_files/.env
+    depends_on:
+      - psql
+  psql:
+    container_name: psql
+    image: postgres:13
+    volumes:
+      - ./data/postgres/data:/var/lib/postgresql/data/
+    env_file:
+      - ./dotenv_files/.env
