@@ -118,7 +118,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin, BaseModel):
     ]
 
     code = models.UUIDField("Código uuid4", default=uuid.uuid4, editable=False)
-    matricula = models.IntegerField('Matrícula', unique=True)
     name = models.CharField('Name', max_length=255)
     nome_colaborador = models.CharField('Nome do Colaborador', max_length=255)
     necessidade_especial = models.CharField('Necessidade Especial', max_length=1, choices=NE_CHOICES, null=True, blank=True)
@@ -130,7 +129,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin, BaseModel):
     email = models.EmailField('Email', unique=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name', 'matricula']
+    REQUIRED_FIELDS = ['name']
 
     objects = UserManager()
 
