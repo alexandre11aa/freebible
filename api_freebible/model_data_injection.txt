@@ -1,0 +1,20 @@
+sudo docker ps
+
+sudo docker exec it <nome-do-container> bin/bash/
+
+container '''
+
+python manage.py shell
+
+from bible.models import Biblia, Livro, Capitulo, Versiculo
+
+biblia_pt = Biblia.objects.create(lingua='PT', versao='Almeida')
+
+livro_genesis = Livro.objects.create(biblia=biblia_pt, livro='GN', testamento='V')
+
+capitulo_1_genesis = Capitulo.objects.create(livro=livro_genesis, autor='Moisés', numero=1)
+
+versiculo_1 = Versiculo.objects.create(capitulo=capitulo_1_genesis, numero=1, versiculo='No princípio, criou Deus os céus e a terra.')
+versiculo_2 = Versiculo.objects.create(capitulo=capitulo_1_genesis, numero=2, versiculo='E a terra era sem forma e vazia; e havia trevas sobre a face do abismo.')
+
+'''
