@@ -35,16 +35,16 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-    'rest_framework',
-    'user',
-    'bible',
+    'django.contrib.admin',         # DEFAULT
+    'django.contrib.auth',          # DEFAULT
+    'django.contrib.contenttypes',  # DEFAULT
+    'django.contrib.sessions',      # DEFAULT
+    'django.contrib.messages',      # DEFAULT
+    'django.contrib.staticfiles',   # DEFAULT
+    'drf_yasg',                     # API
+    'rest_framework',               # API
+    'user',                         # APP
+    'bible',                        # APP
 ]
 
 # Adiciona a configuração do modelo de usuário personalizado
