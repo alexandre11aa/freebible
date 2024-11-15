@@ -16,7 +16,7 @@ def create_bible_version_if_not_exists(lingua, versao, default=False):
     
     # Tenta obter o colaborador pelo email
     try:
-        existing_bible_version = Biblia.objects.get(lingua=lingua, versao=versao, default=False)
+        existing_bible_version = Biblia.objects.get(lingua=lingua, versao=versao)
 
         if default == True:
             print('Versão padrão da Bíblia já está registrada.')
