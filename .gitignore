@@ -9,6 +9,11 @@ media
 # Backup files # 
 *.bak 
 
+# Ignore only the Django Admin static files
+/api_freebible/staticfiles/admin/
+/api_freebible/staticfiles/drf-yasg/
+/api_freebible/staticfiles/rest_framework/
+
 # If you are using PyCharm # 
 # User-specific stuff
 .idea/**/workspace.xml
@@ -98,7 +103,7 @@ celerybeat-schedule.*
 *.sage.py 
 
 # Environments 
-.env 
+#.env 
 .venv 
 env/ 
 venv/ 
