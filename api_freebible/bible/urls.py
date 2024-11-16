@@ -1,9 +1,22 @@
-from django.urls import path
-from .views import BibliaListCreate, LivroListCreate, CapituloListCreate, VersiculoListCreate
+from bible.views.bible import (BibliaViewSet)#, 
+                               #LivroViewSet, 
+                               #CapituloViewSet, 
+                               #VersiculoViewSet)
 
-urlpatterns = [
-    path('biblia/', BibliaListCreate.as_view(), name='biblia-list-create'),
-    path('livro/', LivroListCreate.as_view(), name='livro-list-create'),
-    path('capitulo/', CapituloListCreate.as_view(), name='capitulo-list-create'),
-    path('versiculo/', VersiculoListCreate.as_view(), name='versiculo-list-create'),
-]
+from rest_framework.routers import DefaultRouter
+
+router_bible_version = DefaultRouter()
+#router_book = DefaultRouter()
+#router_chapter = DefaultRouter()
+#router_versicle = DefaultRouter()
+
+# Registrando o CustomUserViewSet no roteador
+router_bible_version.register('bible_version', BibliaViewSet)
+#router_book.register('book', LivroViewSet)
+#router_chapter.register('chapter', CapituloViewSet)
+#router_versicle.register('versicle', VersiculoViewSet)
+
+urlpatterns = router_bible_version.urls
+#urlpatterns = router_book.urls
+#urlpatterns = router_chapter.urls
+#urlpatterns = router_versicle.urls
