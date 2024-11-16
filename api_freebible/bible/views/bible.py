@@ -176,9 +176,6 @@ class BibliaViewSet(viewsets.ModelViewSet):
             elif param == 'versao':
                 # Filtro para campo `versao` com busca aproximada (case insensitive)
                 queryset = queryset.filter(versao__icontains=value)
-            elif param in [f.name for f in Biblia._meta.get_fields()]:
-                # Filtros genéricos para outros campos do modelo
-                queryset = queryset.filter(**{f"{param}__icontains": value})
 
         # Serializa a lista de resultados encontrados
         serializer = self.get_serializer(queryset, many=True)
