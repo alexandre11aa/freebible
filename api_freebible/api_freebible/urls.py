@@ -30,7 +30,7 @@ from drf_yasg.views import get_schema_view  # Usado para gerar a visualização 
 
 # Importando o roteador do app 'user' que registra as URLs da API
 from user.urls import router_user  # Inclui as URLs do app 'user' para o roteador que define as rotas da API
-from bible.urls import router_bible_version, router_book
+from bible.urls import router_bible_version, router_book, router_chapter, router_versicle
 
 # Configuração do Swagger
 # O Swagger é uma ferramenta para gerar documentação interativa e bem formatada para APIs RESTful.
@@ -62,6 +62,12 @@ urlpatterns = [
 
     # O roteador 'router_book' é registrado no app 'bible' e define as rotas da API para o 'LivroViewSet'
     path('api/v1/bible/', include(router_book.urls)),
+
+    # O roteador 'router_chapter' é registrado no app 'bible' e define as rotas da API para o 'CapituloViewSet'
+    path('api/v1/bible/', include(router_chapter.urls)),
+
+    # O roteador 'router_versicle' é registrado no app 'bible' e define as rotas da API para o 'CapituloViewSet'
+    path('api/v1/bible/', include(router_versicle.urls)),
 
     # Rota para gerar a documentação Swagger no formato JSON ou YAML
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
