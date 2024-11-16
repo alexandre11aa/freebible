@@ -1,9 +1,9 @@
 from .views import CustomUserViewSet
 from rest_framework.routers import DefaultRouter
 
-router_consumer = DefaultRouter()
+router_user = DefaultRouter()
 
 # Registrando o CustomUserViewSet no roteador
-router_consumer.register('custom_user', CustomUserViewSet)
+router_user.register('custom_user', CustomUserViewSet)
 
-urlpatterns = router_consumer.urls
+urlpatterns = router_user.urls

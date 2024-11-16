@@ -27,45 +27,6 @@ class CustomUserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Este email já está em uso.")
         return value
 
-
-# Serializer para criação de CustomUser com UUID code
-class CustomUserCreateWithCodeSerializer(serializers.ModelSerializer):
-    """
-    Serializer para criação de um novo CustomUser utilizando um código UUID como campo de referência.
-    """
-    
-    class Meta:
-        model = CustomUser
-        fields = ('code', 'nome', 'email', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
-
-    def create(self, validated_data):
-        password = validated_data.pop('password', None)
-        user = CustomUser(**validated_data)
-        if password:
-            user.set_password(password)
-        user.save()
-        return user
-
-# Serializer para atualização de CustomUser usando o código UUID
-class CustomUserUpdateByCodeSerializer(serializers.ModelSerializer):
-    """
-    Serializer para atualização de CustomUser utilizando o código UUID.
-    """
-    
-    class Meta:
-        model = CustomUser
-        fields = ('code', 'nome', 'email', 'password')
-
-    def update(self, instance, validated_data):
-        password = validated_data.pop('password', None)
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
-        if password:
-            instance.set_password(password)
-        instance.save()
-        return instance
-
 # Serializer para criação de CustomUser utilizando o ID
 class CustomUserCreateWithIDSerializer(serializers.ModelSerializer):
     """
@@ -84,7 +45,6 @@ class CustomUserCreateWithIDSerializer(serializers.ModelSerializer):
             user.set_password(password)
         user.save()
         return user
-
 
 # Serializer para atualização de CustomUser usando o ID
 class CustomUserUpdateByIDSerializer(serializers.ModelSerializer):
